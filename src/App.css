@@ -1,38 +1,370 @@
-.App {
+/* Основные стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header p {
+  color: #666;
+  font-size: 0.9rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.status-bar {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.online {
+  color: #10b981;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background-color: #F0FDF4;
+  border:1px solid #B9F8CF;
+  padding:2px 5px;
+  border-radius: 8px;
+}
+.onliimn{
+  display: flex;
+  gap: 2px;
+ 
+
+}
+.imgonli{
+  width:10px;
+  height:10px;
+  align-self: center;
+}
+.last-updated {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+.refresh-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s;
+}
+
+.refresh-btn:hover {
+  background: #2563eb;
+}
+
+.main-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.input-section,
+.result-section {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #D4D4D4;
+}
+
+.input-section label,
+.result-section h2 {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+#amount {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: #FAFAFA;
+}
+
+.currency-pair {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.from,
+.to {
+  flex: 1;
+}
+#from,#to{
+  border: 1px solid #D4D4D4;
+  background-color: #FAFAFA;
+  display: flex;
+  border-radius: 8px;
+  padding: 5px;
+}
+.chircl{
+  display: flex;
+  width:30px;
+  height:30px;
+  align-self: center;
+  background-color: #EFF6FF;
+  border:1px solid #BEDBFF;
+  border-radius: 50%;
+  justify-content: center;    
+  align-items: center; 
+  margin-right: 10px;
+}
+.name{
+  color:#737373;
+}
+.from select,
+.to select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+}
+
+.from select option,
+.to select option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.from select option::before,
+.to select option::before {
+  content: attr(data-flag);
+  font-size: 1.2rem;
+}
+.code{
+  font-weight: 900;
+}
+.swap-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #6b7280;
+  transition: color 0.2s;
+  display: flex;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+.swap-btn:hover {
+  color: #3b82f6;
+}
+
+.result-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.result-value {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.result-value .amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.result-value .unit {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.rates {
+  margin-bottom: 1.5rem;
+}
+
+.rate-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.rate-item .label {
+  color: #6b7280;
+}
+
+.rate-item .value {
+  color: #333;
+}
+
+.disclaimer {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #e5e7eb;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 1000;
 }
 
-.App-link {
-  color: #61dafb;
+.modal {
+  width: 100%;
+  max-width: 480px;
+  height: 400px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.modal-header {
+  padding: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+}
+
+.currency-list {
+  max-height: 300px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.currency-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+}
+
+.currency-item:hover {
+  background: #f9fafb;
+}
+
+.currency-item.selected {
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+}
+
+/* Мобильный: ≤ 480px */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .status-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .input-section,
+  .result-section {
+    padding: 1rem;
+  }
+
+  .currency-pair {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .swap-btn {
+    width: 100%;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  .result-value {
+    font-size: 1.5rem;
+  }
+  .modal {
+    border-radius: 16px;
+    align-self: center;
+    margin: 20px;
+    height: auto;
+    max-height: 80vh;
   }
 }
+
+/* Десктоп: ≥ 1024px */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem;
+  }
+
+  .main-content {
+    gap: 3rem;
+  }
+
+  .input-section,
+  .result-section {
+    padding: 2rem;
+  }
+
+  .result-value .amount {
+    font-size: 2.5rem;
+  }
+}
+
+
+
+
+
+
